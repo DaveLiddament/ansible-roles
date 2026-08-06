@@ -2,3 +2,8 @@
 certbot_certs: []
 certbot_dry_run: false
 certbot_apache2_ssl_vhosts: "{{ apache2_vhosts | default([]) }}"
+# dns-cloudflare mode: how long certbot waits for challenge TXT records to
+# propagate before asking the CA to validate. The plugin default (10s) is too
+# tight for multi-domain certificates — the last-created record can be
+# validated seconds after creation and fail with NXDOMAIN.
+certbot_dns_propagation_seconds: 60

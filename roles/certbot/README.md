@@ -27,6 +27,7 @@ Installs certbot and requests Let's Encrypt certificates in one of four modes:
 | `certbot_apache2_ssl_vhosts` | `apache2_vhosts` if defined, else `[]` | `apache` mode only: SSL vhosts to install once certificates exist; see below |
 | `certbot_digitalocean_dns_token` | Required in `dns-digitalocean` mode | DigitalOcean API token with all `domain` scopes |
 | `certbot_cloudflare_dns_token` | Required in `dns-cloudflare` mode | Cloudflare API token with Zone → DNS → Edit on the certificates' zones |
+| `certbot_dns_propagation_seconds` | `60` | `dns-cloudflare` mode: wait between creating challenge TXT records and asking the CA to validate. The plugin's own 10s default intermittently fails multi-domain certificates (the last-created record gets validated seconds after creation) |
 
 ## Certificates
 
